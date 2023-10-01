@@ -19,6 +19,12 @@ public class Main {
         System.out.print(resultString);
     }
 
+    /**
+     * Method for build string with repeat
+     * @param inputString - string for repeating
+     * @param repeatCount - repeat count
+     * @return repeated string
+     */
     private static String buildMultyString(String inputString, int repeatCount) {
 
         StringBuilder resultString = new StringBuilder();
