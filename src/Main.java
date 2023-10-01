@@ -14,9 +14,19 @@ public class Main {
         in.close();
 
         System.out.printf("String: %s, should repeat: %d times \n", inputString, repeatCount);
+        String resultString = BuildMultyString(inputString, repeatCount);
+
+        System.out.print(resultString);
+    }
+
+    private static String BuildMultyString(String inputString, int repeatCount){
+
+        StringBuilder resultString = new StringBuilder();
 
         for (int i = 0; i < repeatCount; i++){
-            System.out.print(inputString + "\n");
+            resultString.append(inputString).append("\n");
         }
+
+        return resultString.toString();
     }
 }
