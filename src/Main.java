@@ -14,16 +14,16 @@ public class Main {
         in.close();
 
         System.out.printf("String: %s, should repeat: %d times \n", inputString, repeatCount);
-        String resultString = BuildMultyString(inputString, repeatCount);
+        String resultString = buildMultyString(inputString, repeatCount);
 
         System.out.print(resultString);
     }
 
-    private static String BuildMultyString(String inputString, int repeatCount){
+    private static String buildMultyString(String inputString, int repeatCount) {
 
         StringBuilder resultString = new StringBuilder();
 
-        for (int i = 0; i < repeatCount; i++){
+        for (int i = 0; i < repeatCount; i++) {
             resultString.append(inputString).append("\n");
         }
 
