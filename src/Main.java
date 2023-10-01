@@ -1,8 +1,22 @@
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        // С клавы вводится строка и сколько раз ее надо повторить.
-        // В ответ выводится повторенная строка
+
+        Scanner in = new Scanner(System.in);
+
+        System.out.print("Input string: ");
+        String inputString = in.nextLine();
+
+        System.out.print("Repeat count: ");
+        int repeatCount = in.nextInt();
+
+        in.close();
+
+        System.out.printf("String: %s, should repeat: %d times \n", inputString, repeatCount);
+
+        for (int i = 0; i < repeatCount; i++){
+            System.out.print(inputString + "\n");
+        }
     }
 }
