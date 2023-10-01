@@ -14,9 +14,25 @@ public class Main {
         in.close();
 
         System.out.printf("String: %s, should repeat: %d times \n", inputString, repeatCount);
+        String resultString = buildMultyString(inputString, repeatCount);
 
-        for (int i = 0; i < repeatCount; i++){
-            System.out.print(inputString + "\n");
+        System.out.print(resultString);
+    }
+
+    /**
+     * Method for build string with repeat
+     * @param inputString - string for repeating
+     * @param repeatCount - repeat count
+     * @return repeated string
+     */
+    private static String buildMultyString(String inputString, int repeatCount) {
+
+        StringBuilder resultString = new StringBuilder();
+
+        for (int i = 0; i < repeatCount; i++) {
+            resultString.append(inputString).append("\n");
         }
+
+        return resultString.toString();
     }
 }
