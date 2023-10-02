@@ -1,4 +1,4 @@
-package java.study.repeater;
+package yurij.study.repeater;
 
 import java.util.Scanner;
 
@@ -15,7 +15,7 @@ public class Main {
 
         InputData inputData = getUserData();
 
-        String resultString = buildMultyString(inputData);
+        String resultString = RepeatText.process(inputData.getText(), inputData.getRepeatCount());
 
         System.out.print(resultString);
     }
@@ -38,21 +38,5 @@ public class Main {
         System.out.printf("String: %s, should repeat: %d times \n", inputString, repeatCount);
 
         return new InputData(inputString, repeatCount);
-    }
-
-    /**
-     * Method for build string with repeat.
-     * @param inputData - InputData object.
-     * @return repeated string.
-     */
-    private static String buildMultyString(InputData inputData) {
-
-        StringBuilder resultString = new StringBuilder();
-
-        for (int i = 0; i < inputData.getRepeatCount(); i++) {
-            resultString.append(inputData.getText()).append("\n");
-        }
-
-        return resultString.toString();
     }
 }
