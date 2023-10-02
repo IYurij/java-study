@@ -1,7 +1,7 @@
 package java.study.repeater;
 
 /**
- * Class for get some user data and return object
+ * Class for get some user data and return object.
  */
 public class InputData {
     private final String text;
