@@ -1,4 +1,4 @@
-package java.study.repeater;
+package yurij.study.repeater;
 
 import java.util.Scanner;
 
