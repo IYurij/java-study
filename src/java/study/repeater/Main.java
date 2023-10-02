@@ -13,8 +13,8 @@ public class Main {
     }
 
     /**
-     * Method get user input and create java.study.repeater.InputData object
-     * @return new java.study.repeater.InputData object
+     * Method get user input and create InputData object
+     * @return new InputData object
      */
     private static InputData getUserData() {
         Scanner in = new Scanner(System.in);
@@ -34,7 +34,7 @@ public class Main {
 
     /**
      * Method for build string with repeat
-     * @param inputData - java.study.repeater.InputData object
+     * @param inputData - InputData object
      * @return repeated string
      */
     private static String buildMultyString(InputData inputData) {
