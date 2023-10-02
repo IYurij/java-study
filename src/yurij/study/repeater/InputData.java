@@ -1,4 +1,4 @@
-package java.study.repeater;
+package yurij.study.repeater;
 
 /**
  * Class for get some user data and return object.
