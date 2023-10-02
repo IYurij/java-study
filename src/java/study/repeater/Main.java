@@ -2,7 +2,14 @@ package java.study.repeater;
 
 import java.util.Scanner;
 
+/**
+ * Main class for repeater-package
+ */
 public class Main {
+    /**
+     * Program start point
+     * @param args - start program arguments
+     */
     public static void main(String[] args) {
 
         InputData inputData = getUserData();
