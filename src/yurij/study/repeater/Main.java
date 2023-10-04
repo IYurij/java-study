@@ -12,6 +12,7 @@ public class Main {
      * @param args - start program arguments.
      */
     public static void main(String[] args) {
+
         RepeatText repeatText = new RepeatText();
 
         InputData inputData = getUserData();
