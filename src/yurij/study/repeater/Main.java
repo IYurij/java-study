@@ -12,10 +12,11 @@ public class Main {
      * @param args - start program arguments.
      */
     public static void main(String[] args) {
+        RepeatText repeatText = new RepeatText();
 
         InputData inputData = getUserData();
 
-        String resultString = RepeatText.process(inputData.getText(), inputData.getRepeatCount());
+        String resultString = repeatText.process(inputData.getText(), inputData.getRepeatCount());
 
         System.out.print(resultString);
     }
