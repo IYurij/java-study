@@ -13,11 +13,11 @@ public class Main {
      */
     public static void main(String[] args) {
 
-        RepeatText repeatText = new RepeatText();
-
         InputData inputData = getUserData();
 
-        String resultString = repeatText.process(inputData.getText(), inputData.getRepeatCount());
+        RepeatText repeatText = new RepeatText(inputData.getRepeatCount());
+
+        String resultString = repeatText.process(inputData.getText());
 
         System.out.print(resultString);
     }
