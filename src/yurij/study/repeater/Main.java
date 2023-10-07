@@ -1,7 +1,5 @@
 package yurij.study.repeater;
 
-import java.util.Scanner;
-
 /**
  * Class for create repeated text.
  * Main class for repeater-package.
@@ -12,33 +10,10 @@ public class Main {
      * @param args - start program arguments.
      */
     public static void main(String[] args) {
+        var consoleInput = new ConsoleInput();
 
-        InputData inputData = getUserData();
+        InputResult inputResult = consoleInput.read();
 
-        RepeatText repeatText = new RepeatText(inputData.getRepeatCount());
-
-        String resultString = repeatText.process(inputData.getText());
-
-        System.out.print(resultString);
-    }
-
-    /**
-     * Method get user input and create InputData object.
-     * @return new InputData object.
-     */
-    private static InputData getUserData() {
-        Scanner in = new Scanner(System.in);
-
-        System.out.print("Input string: ");
-        String inputString = in.nextLine();
-
-        System.out.print("Repeat count: ");
-        int repeatCount = in.nextInt();
-
-        in.close();
-
-        System.out.printf("String: %s, should repeat: %d times \n", inputString, repeatCount);
-
-        return new InputData(inputString, repeatCount);
+        inputResult.doProcessors();
     }
 }

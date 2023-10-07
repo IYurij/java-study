@@ -6,10 +6,10 @@ package yurij.study.repeater;
 public class ReverseText implements TextProcessor {
     /**
      *
-     * @param text - user string
-     * @return - result string
+     * @param text - input string
+     * @return - result string after reversing
      */
     public String process(String text) {
-        return null;
+        return new StringBuilder(text).reverse().toString();
     }
 }
