@@ -8,9 +8,9 @@ import java.util.List;
  * Get user input class
  */
 public class ConsoleInput {
-    private final String repeatCommand = "REPEAT";
-    private final String reverseCommand = "REVERSE";
-    private final List<TextProcessor> processorsList = new ArrayList<>();
+    static final String repeatCommand = "REPEAT";
+    static final String reverseCommand = "REVERSE";
+
     private final Scanner in = new Scanner(System.in);
 
     /**
@@ -25,7 +25,7 @@ public class ConsoleInput {
         System.out.print("How many commands you want use: ");
         int commandsCount = in.nextInt();
 
-        tryAddProcessor(commandsCount);
+        List<TextProcessor> processorsList = tryAddProcessor(commandsCount);
 
         in.close();
 
@@ -34,9 +34,11 @@ public class ConsoleInput {
 
     /**
      * Try read user processor input and add to list
-     * @param commandsCount - how match commands user want to use
+     * @param commandsCount - how much commands user want to use
      */
-    private void tryAddProcessor(int commandsCount) {
+    private List<TextProcessor> tryAddProcessor(int commandsCount) {
+        List<TextProcessor> processorsList = new ArrayList<>();
+
         for (int i = commandsCount; i > 0; i--){
             TextProcessor processor = null;
 
@@ -48,6 +50,8 @@ public class ConsoleInput {
 
             processorsList.add(processor);
         }
+
+        return processorsList;
     }
 
     /**

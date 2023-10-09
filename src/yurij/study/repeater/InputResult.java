@@ -14,14 +14,11 @@ public class InputResult {
         this.processors = processors;
     }
 
-    /**
-     * Run processors method
-     */
-    public void doProcessors() {
-        for ( TextProcessor processor : processors) {
-            String result = processor.process(text);
+    public String getText() {
+        return text;
+    }
 
-            System.out.printf("%s", result);
-        }
+    public List<TextProcessor> getProcessors() {
+        return processors;
     }
 }

@@ -1,5 +1,7 @@
 package yurij.study.repeater;
 
+import java.util.List;
+
 /**
  * Class for create repeated text.
  * Main class for repeater-package.
@@ -14,6 +16,17 @@ public class Main {
 
         InputResult inputResult = consoleInput.read();
 
-        inputResult.doProcessors();
+        doProcessors(inputResult.getText(), inputResult.getProcessors());
+    }
+
+    /**
+     * Run processors method
+     */
+    private static void doProcessors(String text, List<TextProcessor> processors) {
+        for ( TextProcessor processor : processors) {
+            String result = processor.process(text);
+
+            System.out.printf("%s", result);
+        }
     }
 }
