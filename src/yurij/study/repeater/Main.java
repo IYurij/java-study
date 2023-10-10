@@ -23,10 +23,10 @@ public class Main {
      * Run processors method
      */
     private static void doProcessors(String text, List<TextProcessor> processors) {
-        for ( TextProcessor processor : processors) {
+        for (TextProcessor processor : processors) {
             String result = processor.process(text);
 
-            System.out.printf("%s", result);
+            System.out.println(result);
         }
     }
 }

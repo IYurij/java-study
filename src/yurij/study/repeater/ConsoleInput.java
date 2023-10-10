@@ -8,8 +8,8 @@ import java.util.List;
  * Get user input class
  */
 public class ConsoleInput {
-    static final String repeatCommand = "REPEAT";
-    static final String reverseCommand = "REVERSE";
+    private static final String repeatCommand = "REPEAT";
+    private static final String reverseCommand = "REVERSE";
 
     private final Scanner in = new Scanner(System.in);
 
