@@ -8,13 +8,6 @@ import java.util.Objects;
  * Main class for repeater-package.
  */
 public class Main {
-//+    теперь для ConsoleInput и FileInput выделяй общий интерфейс.
-//+    классы наследуй от этого интерфейса.
-//    в main на основе String[] args, необходимо понимать читаем с консоли или с файла.
-//
-//    если с консоли, должен передаваться либо аргумент командной строки —console, либо вообще никакой не передаваться.
-//    если с файла, то —file <имя файла>
-
     private static final String fileName = "input-data.dat";
 
     /**
@@ -23,18 +16,17 @@ public class Main {
      * @param args - start program arguments.
      */
     public static void main(String[] args) {
-        InputResult inputResult;
-        Readable fileInput;
+        Readable inputData;
 
         if (args.length == 0 || (args.length == 1 && Objects.equals(args[0], "-console"))) {
-            fileInput = new ConsoleInput();
+            inputData = new ConsoleInput();
         } else if (args.length == 2 && Objects.equals(args[0], "-file")) {
-            fileInput = new FileInput(args[1]);
+            inputData = new FileInput(args[1]);
         } else {
             throw new RuntimeException("Incorrect command!");
         }
 
-        inputResult = fileInput.read();
+        InputResult inputResult = inputData.read();
 
         doProcessors(inputResult.getText(), inputResult.getProcessors());
     }
