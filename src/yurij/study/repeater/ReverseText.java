@@ -5,7 +5,6 @@ package yurij.study.repeater;
  */
 public class ReverseText implements TextProcessor {
     /**
-     *
      * @param text - input string
      * @return - result string after reversing
      */

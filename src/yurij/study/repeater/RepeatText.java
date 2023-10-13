@@ -12,6 +12,7 @@ public class RepeatText implements TextProcessor {
 
     /**
      * Method for build string with repeat.
+     *
      * @param text - user text.
      * @return repeated string.
      */

@@ -13,6 +13,7 @@ public class ConsoleInput {
 
     /**
      * Read user input method
+     *
      * @return InputResult object
      */
     public InputResult read() {
@@ -34,6 +35,7 @@ public class ConsoleInput {
 
     /**
      * Try read user processor input and add to list
+     *
      * @param commandsCount - how much commands user want to use
      */
     private List<TextProcessor> tryAddProcessor(int commandsCount, Scanner in) {
@@ -42,7 +44,7 @@ public class ConsoleInput {
         for (int i = commandsCount; i > 0; i--) {
             TextProcessor processor = null;
 
-            while(processor == null) {
+            while (processor == null) {
                 String userCommand = in.nextLine();
 
                 processor = tryParseCommand(userCommand, in);
@@ -56,11 +58,12 @@ public class ConsoleInput {
 
     /**
      * User commands parser method
+     *
      * @param userCommand - user input
      * @return - new TextProcessor object if command successful parsed
      */
     private TextProcessor tryParseCommand(String userCommand, Scanner in) {
-        switch (userCommand){
+        switch (userCommand) {
             case repeatCommand:
                 System.out.print("Repeat count: ");
                 int repeatCount = in.nextInt();
@@ -71,7 +74,7 @@ public class ConsoleInput {
             case reverseCommand:
                 System.out.print("Command: REVERSE\n");
 
-                return  new ReverseText();
+                return new ReverseText();
 
             default:
                 System.out.print("Available commands - REPEAT, REVERSE \n");

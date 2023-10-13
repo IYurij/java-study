@@ -15,8 +15,10 @@ public class Main {
     //    https://metanit.com/java/tutorial/6.8.php
 
     private static final String fileName = "input-data.dat";
+
     /**
      * Program start point.
+     *
      * @param args - start program arguments.
      */
     public static void main(String[] args) {

@@ -22,6 +22,7 @@ public class FileInput {
 
     /**
      * Read commands from file method
+     *
      * @return InputResult object
      */
     public InputResult read() {
@@ -38,6 +39,7 @@ public class FileInput {
 
     /**
      * Method read commands from file and return TextProcessors list
+     *
      * @param stringsList - full strings from file as list
      * @return TextProcessors list
      */
@@ -63,21 +65,21 @@ public class FileInput {
 
     /**
      * Read all strings from file to List
+     *
      * @param fileName file name with strings
      * @return strings as List make from file
      */
     private List<String> createStringsList(String fileName) {
         List<String> commandsList = new ArrayList<>();
 
-        try(BufferedReader br = new BufferedReader(new FileReader(path + fileName))) {
+        try (BufferedReader br = new BufferedReader(new FileReader(path + fileName))) {
             String s;
 
-            while((s = br.readLine()) != null) {
+            while ((s = br.readLine()) != null) {
                 commandsList.add(s);
                 System.out.println(s);
             }
-        }
-        catch(IOException ex) {
+        } catch (IOException ex) {
             System.out.println(ex.getMessage());
             throw new RuntimeException(ex);
         }
