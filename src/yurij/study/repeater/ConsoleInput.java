@@ -19,8 +19,7 @@ public class ConsoleInput {
         String inputString;
         List<TextProcessor> processorsList;
 
-        try (Scanner in = new Scanner(System.in))
-        {
+        try (Scanner in = new Scanner(System.in)) {
             System.out.print("Enter your string: ");
             inputString = in.nextLine();
 
@@ -40,7 +39,7 @@ public class ConsoleInput {
     private List<TextProcessor> tryAddProcessor(int commandsCount, Scanner in) {
         List<TextProcessor> processorsList = new ArrayList<>();
 
-        for (int i = commandsCount; i > 0; i--){
+        for (int i = commandsCount; i > 0; i--) {
             TextProcessor processor = null;
 
             while(processor == null) {

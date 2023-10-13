@@ -13,7 +13,7 @@ import java.util.Objects;
 public class FileInput {
     private static final String repeatCommand = "REPEAT";
     private static final String reverseCommand = "REVERSE";
-
+    private static final String path = "D:/my-study/java/java-study/src/yurij/study/repeater/";
     private final String fileName;
 
     public FileInput(String fileName) {
@@ -67,21 +67,19 @@ public class FileInput {
      * @return strings as List make from file
      */
     private List<String> createStringsList(String fileName) {
-        String path = "D:/my-study/java/java-study/src/yurij/study/repeater/";
         List<String> commandsList = new ArrayList<>();
 
-        try(BufferedReader br=new BufferedReader(new FileReader(path + fileName)))
-        {
+        try(BufferedReader br = new BufferedReader(new FileReader(path + fileName))) {
             String s;
 
-            while((s=br.readLine())!=null){
+            while((s = br.readLine()) != null) {
                 commandsList.add(s);
                 System.out.println(s);
             }
         }
-        catch(IOException ex){
-
+        catch(IOException ex) {
             System.out.println(ex.getMessage());
+            throw new RuntimeException(ex);
         }
 
         return commandsList;
