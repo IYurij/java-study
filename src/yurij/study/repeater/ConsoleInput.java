@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Get user input class
  */
-public class ConsoleInput {
+public class ConsoleInput implements Readable {
     private static final String repeatCommand = "REPEAT";
     private static final String reverseCommand = "REVERSE";
 
