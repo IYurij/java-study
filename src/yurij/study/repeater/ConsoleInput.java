@@ -11,41 +11,43 @@ public class ConsoleInput {
     private static final String repeatCommand = "REPEAT";
     private static final String reverseCommand = "REVERSE";
 
-    private final Scanner in = new Scanner(System.in);
-
     /**
      * Read user input method
+     *
      * @return InputResult object
      */
     public InputResult read() {
+        String inputString;
+        List<TextProcessor> processorsList;
 
-        System.out.print("Enter your string: ");
-        String inputString = in.nextLine();
+        try (Scanner in = new Scanner(System.in)) {
+            System.out.print("Enter your string: ");
+            inputString = in.nextLine();
 
-        System.out.print("How many commands you want use: ");
-        int commandsCount = in.nextInt();
+            System.out.print("How many commands you want use: ");
+            int commandsCount = in.nextInt();
 
-        List<TextProcessor> processorsList = tryAddProcessor(commandsCount);
-
-        in.close();
+            processorsList = tryAddProcessor(commandsCount, in);
+        }
 
         return new InputResult(inputString, processorsList);
     }
 
     /**
      * Try read user processor input and add to list
+     *
      * @param commandsCount - how much commands user want to use
      */
-    private List<TextProcessor> tryAddProcessor(int commandsCount) {
+    private List<TextProcessor> tryAddProcessor(int commandsCount, Scanner in) {
         List<TextProcessor> processorsList = new ArrayList<>();
 
-        for (int i = commandsCount; i > 0; i--){
+        for (int i = commandsCount; i > 0; i--) {
             TextProcessor processor = null;
 
-            while(processor == null) {
+            while (processor == null) {
                 String userCommand = in.nextLine();
 
-                processor = tryParseCommand(userCommand);
+                processor = tryParseCommand(userCommand, in);
             }
 
             processorsList.add(processor);
@@ -56,11 +58,12 @@ public class ConsoleInput {
 
     /**
      * User commands parser method
+     *
      * @param userCommand - user input
      * @return - new TextProcessor object if command successful parsed
      */
-    private TextProcessor tryParseCommand(String userCommand) {
-        switch (userCommand){
+    private TextProcessor tryParseCommand(String userCommand, Scanner in) {
+        switch (userCommand) {
             case repeatCommand:
                 System.out.print("Repeat count: ");
                 int repeatCount = in.nextInt();
@@ -71,7 +74,7 @@ public class ConsoleInput {
             case reverseCommand:
                 System.out.print("Command: REVERSE\n");
 
-                return  new ReverseText();
+                return new ReverseText();
 
             default:
                 System.out.print("Available commands - REPEAT, REVERSE \n");

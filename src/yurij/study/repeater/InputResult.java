@@ -9,7 +9,7 @@ public class InputResult {
     private final String text;
     private final List<TextProcessor> processors;
 
-    public InputResult(String text, List<TextProcessor> processors){
+    public InputResult(String text, List<TextProcessor> processors) {
         this.text = text;
         this.processors = processors;
     }
