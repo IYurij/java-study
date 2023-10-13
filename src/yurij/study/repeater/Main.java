@@ -1,18 +1,19 @@
 package yurij.study.repeater;
 
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Class for create repeated text.
  * Main class for repeater-package.
  */
 public class Main {
-    //+    у нас есть класс ConsoleInput, нужно будет его скопировать (пока что скопировать) в новый класс,
-    //    и реализовать ввод через файл вместо System.in.
-    //    Имя файла должно передаваться в конструктор класса FileInput.
-    //    в Main классе потребуется заменить ConsoleInput на FileInput, имя файла пока забить константой.
-    //    https://metanit.com/java/tutorial/6.1.php
-    //    https://metanit.com/java/tutorial/6.8.php
+//+    теперь для ConsoleInput и FileInput выделяй общий интерфейс.
+//+    классы наследуй от этого интерфейса.
+//    в main на основе String[] args, необходимо понимать читаем с консоли или с файла.
+//
+//    если с консоли, должен передаваться либо аргумент командной строки —console, либо вообще никакой не передаваться.
+//    если с файла, то —file <имя файла>
 
     private static final String fileName = "input-data.dat";
 
@@ -22,9 +23,18 @@ public class Main {
      * @param args - start program arguments.
      */
     public static void main(String[] args) {
-        var fileInput = new FileInput(fileName);
+        InputResult inputResult;
+        Readable fileInput;
 
-        InputResult inputResult = fileInput.read();
+        if (args.length == 0 || (args.length == 1 && Objects.equals(args[0], "-console"))) {
+            fileInput = new ConsoleInput();
+        } else if (args.length == 2 && Objects.equals(args[0], "-file")) {
+            fileInput = new FileInput(args[1]);
+        } else {
+            throw new RuntimeException("Incorrect command!");
+        }
+
+        inputResult = fileInput.read();
 
         doProcessors(inputResult.getText(), inputResult.getProcessors());
     }

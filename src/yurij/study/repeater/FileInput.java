@@ -10,7 +10,7 @@ import java.util.Objects;
 /**
  * Get commands from file
  */
-public class FileInput {
+public class FileInput implements Readable {
     private static final String repeatCommand = "REPEAT";
     private static final String reverseCommand = "REVERSE";
     private static final String path = "D:/my-study/java/java-study/src/yurij/study/repeater/";
