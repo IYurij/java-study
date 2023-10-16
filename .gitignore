@@ -25,3 +25,6 @@ replay_pid*
 
 # .dat files
 *.dat
+
+# maven target
+target/*
