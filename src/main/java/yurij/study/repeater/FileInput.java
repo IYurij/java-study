@@ -13,7 +13,7 @@ import java.util.Objects;
 public class FileInput implements Readable {
     private static final String repeatCommand = "REPEAT";
     private static final String reverseCommand = "REVERSE";
-    private static final String path = "D:/my-study/java/java-study/src/yurij/study/repeater/";
+    private static final String path = "src/main/resources/";
     private final String fileName;
 
     public FileInput(String fileName) {
@@ -26,34 +26,27 @@ public class FileInput implements Readable {
      * @return InputResult object
      */
     public InputResult read() {
-        String inputString;
+        InputData inputData = tryReadTextFile();
 
-        List<String> stringsList = createStringsList(fileName);
+        List<TextProcessor> processorsList = createTextProcessorsList(inputData.getCommandsList());
 
-        inputString = stringsList.get(0);
-
-        List<TextProcessor> processorsList = createTextProcessorsList(stringsList);
-
-        return new InputResult(inputString, processorsList);
+        return new InputResult(inputData.getText(), processorsList);
     }
 
     /**
-     * Method read commands from file and return TextProcessors list
+     * Method for create textProcessors list
      *
-     * @param stringsList - full strings from file as list
-     * @return TextProcessors list
+     * @param commandsList - list of Command objects
+     * @return List<TextProcessor> - text processors list
      */
-    private List<TextProcessor> createTextProcessorsList(List<String> stringsList) {
+    private List<TextProcessor> createTextProcessorsList(List<Command> commandsList) {
         List<TextProcessor> processorsList = new ArrayList<>();
 
-        List<String> commandsSubList = stringsList.subList(2, stringsList.size());
+        for (Command command : commandsList) {
 
-        for (String s : commandsSubList) {
-            String[] command = s.split(" ");
-
-            if (command.length > 1 && Objects.equals(command[0], repeatCommand)) {
-                processorsList.add(new RepeatText(Integer.parseInt(command[1])));
-            } else if (Objects.equals(command[0], reverseCommand)) {
+            if (Objects.equals(command.getName(), repeatCommand)) {
+                processorsList.add(new RepeatText(command.getCount()));
+            } else if (Objects.equals(command.getName(), reverseCommand)) {
                 processorsList.add(new ReverseText());
             } else {
                 throw new RuntimeException("Command not found");
@@ -64,26 +57,39 @@ public class FileInput implements Readable {
     }
 
     /**
-     * Read all strings from file to List
+     * Method for create InputData object from json file
      *
-     * @param fileName file name with strings
-     * @return strings as List make from file
+     * @return InputData object
      */
-    private List<String> createStringsList(String fileName) {
-        List<String> commandsList = new ArrayList<>();
+    private InputData tryReadTextFile() {
+        InputData inputData = new InputData();
 
         try (BufferedReader br = new BufferedReader(new FileReader(path + fileName))) {
             String s;
+            int linesCount = 0;
 
             while ((s = br.readLine()) != null) {
-                commandsList.add(s);
+                if (linesCount == 0) {
+                    inputData.setText(s);
+                } else {
+                    var splitCommand = s.split(" ");
+
+                    if (splitCommand.length > 1) {
+                        inputData.addCommandToCommandsList(splitCommand[0], Integer.parseInt(splitCommand[1]));
+                    } else {
+                        inputData.addCommandToCommandsList(splitCommand[0]);
+                    }
+                }
+
                 System.out.println(s);
+                linesCount++;
             }
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
             throw new RuntimeException(ex);
         }
 
-        return commandsList;
+
+        return inputData;
     }
 }

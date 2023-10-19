@@ -9,6 +9,7 @@ import java.util.Objects;
  */
 public class Main {
     private static final String fileName = "input-data.dat";
+    private static final String jsonName = "input-json.json";
 
     /**
      * Program start point.
@@ -19,9 +20,12 @@ public class Main {
         Readable inputData;
 
         if (args.length == 0 || (args.length == 1 && Objects.equals(args[0], "-console"))) {
-            inputData = new ConsoleInput();
+            //inputData = new ConsoleInput();
+            inputData = new FileInput(fileName);
+            //inputData = new JsonInput(jsonName);
         } else if (args.length == 2 && Objects.equals(args[0], "-file")) {
-            inputData = new FileInput(args[1]);
+            //inputData = new FileInput(args[1]);
+            inputData = new JsonInput(args[1]);
         } else {
             throw new RuntimeException("Incorrect command!");
         }
