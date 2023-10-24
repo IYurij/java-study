@@ -11,8 +11,6 @@ import java.util.Objects;
  * Get commands from file
  */
 public class FileInput implements Readable {
-    private static final String repeatCommand = "REPEAT";
-    private static final String reverseCommand = "REVERSE";
     private static final String path = "src/main/resources/";
     private final String fileName;
 
@@ -44,9 +42,9 @@ public class FileInput implements Readable {
 
         for (Command command : commandsList) {
 
-            if (Objects.equals(command.getName(), repeatCommand)) {
+            if (Objects.equals(command.getName(), CommandNames.REPEAT_COMMAND)) {
                 processorsList.add(new RepeatText(command.getCount()));
-            } else if (Objects.equals(command.getName(), reverseCommand)) {
+            } else if (Objects.equals(command.getName(), CommandNames.REVERSE_COMMAND)) {
                 processorsList.add(new ReverseText());
             } else {
                 throw new RuntimeException("Command not found");
@@ -86,7 +84,8 @@ public class FileInput implements Readable {
             }
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
-            throw new RuntimeException(ex);
+
+            return InputData.empty();
         }
 
 

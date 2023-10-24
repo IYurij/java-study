@@ -13,14 +13,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  * Get commands from json file
  */
 public class JsonInput implements Readable {
-    private static final String repeatCommand = "REPEAT";
-    private static final String reverseCommand = "REVERSE";
-    private final ObjectMapper objectMapper = new ObjectMapper();
-
-    private final String fileName;
+    private final URL url;
+    private final ObjectMapper objectMapper;
 
     public JsonInput(String fileName) {
-        this.fileName = fileName;
+        url = JsonInput.class.getClassLoader().getResource(fileName);
+        objectMapper = new ObjectMapper();
     }
 
     /**
@@ -48,9 +46,9 @@ public class JsonInput implements Readable {
 
         for (Command command : commandsList) {
 
-            if (Objects.equals(command.getName(), repeatCommand)) {
+            if (Objects.equals(command.getName(), CommandNames.REPEAT_COMMAND)) {
                 processorsList.add(new RepeatText(command.getCount()));
-            } else if (Objects.equals(command.getName(), reverseCommand)) {
+            } else if (Objects.equals(command.getName(), CommandNames.REVERSE_COMMAND)) {
                 processorsList.add(new ReverseText());
             } else {
                 throw new RuntimeException("Command not found");
@@ -66,8 +64,6 @@ public class JsonInput implements Readable {
      * @return InputData object if success or empty InputData object
      */
     private InputData tryReadJson() {
-        URL url = JsonInput.class.getClassLoader().getResource(fileName);
-
         objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
         InputData inputData;

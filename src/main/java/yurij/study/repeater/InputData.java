@@ -7,7 +7,7 @@ import java.util.List;
  * POJO object for commands
  */
 public class InputData {
-    private String text;
+    private String text = "";
     private List<Command> commandsList = new ArrayList<>();
 
     public InputData() {
@@ -40,9 +40,7 @@ public class InputData {
      * @param name text string
      */
     public void addCommandToCommandsList(String name) {
-        Command command = new Command();
-        command.setName(name);
-        commandsList.add(command);
+        addCommandToCommandsList(name, null);
     }
 
     /**

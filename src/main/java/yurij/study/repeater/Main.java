@@ -20,13 +20,12 @@ public class Main {
         Readable inputData;
 
         if (args.length == 0 || (args.length == 1 && Objects.equals(args[0], "-console"))) {
-            //inputData = new ConsoleInput();
-            inputData = new FileInput(fileName);
-            //inputData = new JsonInput(jsonName);
+            inputData = new ConsoleInput();
         } else if (args.length == 2 && Objects.equals(args[0], "-file")) {
-            //inputData = new FileInput(args[1]);
+            inputData = new FileInput(args[1]);
+        } else if (args.length == 2 && Objects.equals(args[0], "-json")) {
             inputData = new JsonInput(args[1]);
-        } else {
+        }else {
             throw new RuntimeException("Incorrect command!");
         }
 
