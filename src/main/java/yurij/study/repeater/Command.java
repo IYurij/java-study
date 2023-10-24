@@ -1,7 +1,7 @@
 package yurij.study.repeater;
 
 /**
- * POJO object for command
+ * POJO object for command.
  */
 public class Command {
     private String name;
