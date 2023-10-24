@@ -19,6 +19,7 @@ public class JsonInput implements Readable {
     public JsonInput(String fileName) {
         url = JsonInput.class.getClassLoader().getResource(fileName);
         objectMapper = new ObjectMapper();
+        objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
     }
 
     /**
@@ -64,8 +65,6 @@ public class JsonInput implements Readable {
      * @return InputData object if success or empty InputData object
      */
     private InputData tryReadJson() {
-        objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-
         InputData inputData;
         try {
             assert url != null;
