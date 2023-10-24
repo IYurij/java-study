@@ -1,0 +1,7 @@
+{
+  "text": "test json string",
+  "commandsList" : [
+    { "name" : "REPEAT", "count" : 3 },
+    { "name" : "REVERSE" }
+  ]
+}

@@ -8,9 +8,6 @@ import java.util.List;
  * Get user input class
  */
 public class ConsoleInput implements Readable {
-    private static final String repeatCommand = "REPEAT";
-    private static final String reverseCommand = "REVERSE";
-
     /**
      * Read user input method
      *
@@ -64,14 +61,14 @@ public class ConsoleInput implements Readable {
      */
     private TextProcessor tryParseCommand(String userCommand, Scanner in) {
         switch (userCommand) {
-            case repeatCommand:
+            case CommandNames.REPEAT_COMMAND:
                 System.out.print("Repeat count: ");
                 int repeatCount = in.nextInt();
                 System.out.printf("Command: REPEAT, should repeat: %d times \n", repeatCount);
 
                 return new RepeatText(repeatCount);
 
-            case reverseCommand:
+            case CommandNames.REVERSE_COMMAND:
                 System.out.print("Command: REVERSE\n");
 
                 return new ReverseText();

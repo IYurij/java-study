@@ -1,5 +1,6 @@
 package yurij.study.repeater;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -20,5 +21,16 @@ public class InputResult {
 
     public List<TextProcessor> getProcessors() {
         return processors;
+    }
+
+    /**
+     * Static method for create empty object
+     *
+     * @return empty object
+     */
+    public static InputResult empty() {
+        List<TextProcessor> processorsList = new ArrayList<>();
+
+        return new InputResult("", processorsList);
     }
 }
